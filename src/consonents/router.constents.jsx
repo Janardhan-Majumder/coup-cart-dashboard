@@ -11,12 +11,12 @@ import { RiDashboardHorizontalFill } from "react-icons/ri";
 export const sidebarItems = [
   {
     name: "Dashboard",
-    path: "/dashboard",
+    path: "/",
     icon: RiDashboardHorizontalFill,
   },
   {
     name: "Earnings",
-    path: "/dashboard/earnings",
+    path: "/earnings",
     icon: GrMoney,
   },
   {

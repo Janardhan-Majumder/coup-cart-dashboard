@@ -1,45 +1,39 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Badge, Dropdown, Button, Menu } from "antd";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Badge } from "antd";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { FaRegUser } from "react-icons/fa6";
-import { MdMenu } from "react-icons/md";
-// import SearchBox from "../SearchBox/SearchBox";
+import profileImage from "../../assets/images/dash-profile.png";
 
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex justify-between items-center rounded-md mb-[24px] p-[16px] bg-primary">
-      <div className="flex items-center gap-5">
-        <MdMenu className="h-[42px] w-[42px] text-secondary" />
-        {location.pathname == "/dashboard/users" ||
-        location.pathname == "/dashboard/appointments" ||
-        location.pathname == "/dashboard/earnings" ? (
-          <div className="">{/* <SearchBox /> */}</div>
-        ) : (
-          <></>
-        )}
+    <div className="w-full h-[88px] flex justify-between items-center rounded-2xl py-[16px] px-[32px] bg-[#E9F4F3]">
+      <div className="text-start space-y-0.5">
+        <p className="text-[24px] font-semibold text-[#1F8D84]">
+          {"Welcome,RJ"}
+        </p>
+        <p className="text-[#181414]">{"Have a nice day!"}</p>
       </div>
-
-      <div className="flex gap-5">
-        {/* <Dropdown overlay={menu} placement="bottomRight" arrow> */}
+      <div className="flex gap-x-[41px]">
         <div
           onClick={(e) => navigate("notification")}
           className="relative flex items-center "
         >
-          <Badge style={{ backgroundColor: "red" }} count={1}>
+          <Badge style={{ backgroundColor: "#1F8D84" }} count={1}>
             <IoIosNotificationsOutline
               style={{ cursor: "pointer" }}
-              className={` bg-primary w-[52px] h-[52px] text-secondary border-2 border-secondary rounded-full p-2 `}
+              className={`text-[#1F8D84] bg-[#5ee6da] w-[48px] h-[48px] rounded-full p-2 shadow-sm`}
             />
           </Badge>
         </div>
-        {/* </Dropdown> */}
-        <div
-          onClick={() => navigate("profile-information")}
-          className="flex items-center cursor-pointer mr-[30px] bg-primary text-white rounded-full p-1"
-        >
-          <FaRegUser className="text-secondary border-2 border-secondary rounded-full p-2 w-[52px] h-[52px]" />
+        <div className="flex items-center gap-3">
+          <div>
+            <img src={profileImage} alt="" className="rounded-full h-[48px] w-[48px]"  />
+          </div>
+          <div className="space-y-0.5 text-right">
+            <h5 className="text-[16px] font-medium">{"RJ"}</h5>
+            <p className="text-xs ">{"Admin"}</p>
+          </div>
         </div>
       </div>
     </div>

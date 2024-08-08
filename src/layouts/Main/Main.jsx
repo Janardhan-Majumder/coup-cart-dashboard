@@ -5,18 +5,18 @@ import Header from "./Header";
 
 const Main = () => {
   return (
-    <div className="min-h-screen relative" >
+    <div className="flex text-start">
       <div className="">
         <Sidebar />
       </div>
-      {/* <div className="flex flex-col flex-1 overflow-hidden">
-        <div className="ml-[350px] fixed top-3 w-[calc(100%-400px)] z-10">
+      <div className="flex-1 pl-[326px]">
+        <div className="fixed w-[calc(100%-326px)] p-[24px] z-10 bg-[#FFFFFF]">
           <Header />
         </div>
-        <div className="overflow-y-auto h-full flex-1 ml-[74px] pt-[80px] pl-[275px]">
+        <div className="p-[24px] pt-[152px]">
           <Outlet />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
