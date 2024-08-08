@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { Button, Table, Tag } from "antd";
 import { FiAlertCircle } from "react-icons/fi";
 import DashboardModal from "../../../Components/DashboardModal";
+import { IoMdClose } from "react-icons/io";
 const DashboardTable = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userDetails, setUserDetails] = useState({});
+  const [modalData, setModalData] = useState({});
   const showModal = (data) => {
     setIsModalOpen(true);
-    setUserDetails(data);
+    setModalData(data);
   };
   const columns = [
     {
@@ -77,11 +78,41 @@ const DashboardTable = () => {
           }}
         />
       </div>
-      <DashboardModal
-        setIsModalOpen={setIsModalOpen}
-        isModalOpen={isModalOpen}
-        userDetails={userDetails}
-      />
+      <DashboardModal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen}>
+        <div className="h-[560px] flex flex-col justify-between">
+          <div className="space-y-[36px] text-sm text-[#181414] py-2">
+            <h6 className="font-medium text-center">Transaction Details</h6>
+            <div className="flex justify-between">
+              <p>Transaction ID : </p>
+              <p className="font-medium">{modalData.transIs}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>Date : </p>
+              <p className="font-medium">{modalData.date}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>User name :</p>
+              <p className="font-medium">{modalData.name}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>A/C number :</p>
+              <p className="font-medium">{"****  ****  ****  *545"}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>A/C holder name :</p>
+              <p className="font-medium">{"Henry"}</p>
+            </div>
+            <div className="flex justify-between">
+              <p>Transaction amount :</p>
+              <p className="font-medium">{modalData.amount}</p>
+            </div>
+          </div>
+          <div className="flex gap-5 pb-[40px]">
+            <Button style={{height: "44px"}} className="w-full rounded-xl font-medium">Download</Button>
+            <Button style={{height: "44px", backgroundColor: "#1F8D84", color: "white"}} className="w-full rounded-xl font-medium" >Print</Button>
+          </div>
+        </div>
+      </DashboardModal>
     </div>
   );
 };

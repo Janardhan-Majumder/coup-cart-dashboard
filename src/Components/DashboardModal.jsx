@@ -2,7 +2,11 @@ import React from "react";
 import { Modal } from "antd";
 import { IoMdClose } from "react-icons/io";
 
-const DashboardModal = ({ isModalOpen, setIsModalOpen, userDetails }) => {
+const DashboardModal = ({
+  isModalOpen,
+  setIsModalOpen,
+  children,
+}) => {
   //   const handleOk = () => {
   //     setIsModalOpen(false);
   //   };
@@ -18,8 +22,11 @@ const DashboardModal = ({ isModalOpen, setIsModalOpen, userDetails }) => {
       onCancel={handleCancel}
       footer={null}
       closeIcon={false}
+      style={{
+        maxWidth: "444px",
+      }}
     >
-      <div className="h-[560px]">
+      <div>
         <button
           onClick={handleCancel}
           type="primary"
@@ -28,29 +35,7 @@ const DashboardModal = ({ isModalOpen, setIsModalOpen, userDetails }) => {
         >
           <IoMdClose size={23} />
         </button>
-        <div className="space-y-10 p-4 text-sm text-[#222222]">
-          <h6 className="font-medium text-center">User Details</h6>
-          <div className="flex justify-between">
-            <p>User Name</p>
-            <p className="font-medium">{userDetails.name}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Email</p>
-            <p className="font-medium">{userDetails.email}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Phone Number</p>
-            <p className="font-medium">{userDetails.phone}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Address</p>
-            <p className="font-medium">{"Dhaka, Bangladesh"}</p>
-          </div>
-          <div className="flex justify-between">
-            <p>Joining Date</p>
-            <p className="font-medium">{userDetails.joinDate}</p>
-          </div>
-        </div>
+        {children}
       </div>
     </Modal>
   );

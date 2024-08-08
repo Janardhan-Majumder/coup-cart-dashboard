@@ -13,7 +13,7 @@ const Main = () => {
         <div className="fixed w-[calc(100%-326px)] p-[24px] z-10 bg-[#FFFFFF]">
           <Header />
         </div>
-        <div className="p-[24px] pt-[140px]">
+        <div className="p-[24px] pt-[138px]">
           <Outlet />
         </div>
       </div>

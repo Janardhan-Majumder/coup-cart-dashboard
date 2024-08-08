@@ -16,13 +16,13 @@ const Header = () => {
       </div>
       <div className="flex gap-x-[41px]">
         <div
-          onClick={(e) => navigate("notification")}
+          onClick={(e) => navigate("/notifications")}
           className="relative flex items-center "
         >
           <Badge style={{ backgroundColor: "#1F8D84" }} count={1}>
             <IoIosNotificationsOutline
               style={{ cursor: "pointer" }}
-              className={`text-[#1F8D84] bg-[#5ee6da] w-[48px] h-[48px] rounded-full p-2 shadow-sm`}
+              className={`text-[#1F8D84] hover:text-[#1f8d2e] bg-[#BADCD9] w-[48px] h-[48px] rounded-full p-2 shadow-sm transition-all`}
             />
           </Badge>
         </div>

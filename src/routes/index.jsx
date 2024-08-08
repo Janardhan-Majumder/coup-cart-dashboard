@@ -7,6 +7,7 @@ import VerifyEmail from "../pages/Auth/VerifyEmail";
 import ResetPassword from "../pages/Auth/ResetPassword";
 import DashboardHome from "../pages/Main/DashboardHome/DashboardHome";
 import Earnings from "../pages/Main/Earnings/Earnings";
+import Notifications from "../pages/Main/Notifications/Notifications";
 
 const router = createBrowserRouter([
   {
@@ -65,10 +66,10 @@ const router = createBrowserRouter([
       //         path: "/edit-profile/:id",
       //         element: <EditProfileInformation/>,
       //       },
-      //       {
-      //         path: "/notification",
-      //         element: <Notification/>,
-      //       },
+            {
+              path: "/notifications",
+              element: <Notifications/>,
+            },
       //       {
       //         path: "/settings",
       //         element: <Settings/>,

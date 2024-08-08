@@ -8,7 +8,7 @@ const Sidebar = () => {
   const handleLogOut = () => {};
 
   return (
-    <div className="fixed top-0 left-0 w-[326px] min-h-screen flex flex-col justify-between bg-primary py-[59px]">
+    <div className="fixed top-0 left-0 w-[326px] min-h-screen flex flex-col justify-between bg-primary py-[50px]">
       <div className="space-y[24px">
         <div className="px-[38px]">
           <img className="w-[250px] mx-auto" src={logo} alt="" />
