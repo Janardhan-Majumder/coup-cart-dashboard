@@ -8,6 +8,7 @@ import ResetPassword from "../pages/Auth/ResetPassword";
 import DashboardHome from "../pages/Main/DashboardHome/DashboardHome";
 import Earnings from "../pages/Main/Earnings/Earnings";
 import Notifications from "../pages/Main/Notifications/Notifications";
+import Users from "../pages/Main/Users/Users";
 
 const router = createBrowserRouter([
   {
@@ -22,10 +23,10 @@ const router = createBrowserRouter([
               path: "/earnings",
               element: <Earnings />,
             },
-      //       {
-      //         path: "/users",
-      //         element: <AllUser/>,
-      //       },
+            {
+              path: "/users",
+              element: <Users />,
+            },
       //       {
       //         path: "/chats",
       //         element: <ChatList/>,

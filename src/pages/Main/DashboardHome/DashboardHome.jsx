@@ -1,8 +1,6 @@
-import { Button, Dropdown, Space } from "antd";
-import React, { useState } from "react";
-import { FaChevronDown } from "react-icons/fa6";
+import React from "react";
 import DashboardChart from "./DashboardCahrt";
-import DashboardTable from "./DashboardTable";
+import DashboardHomeTable from "./DashboardHomeTable";
 const items = [
   {
     label: (
@@ -93,7 +91,7 @@ const DashboardHome = () => {
         </div>
       </div>
       <DashboardChart />
-      <DashboardTable />
+      <DashboardHomeTable />
     </div>
   );
 };

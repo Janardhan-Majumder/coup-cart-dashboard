@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Button, Table, Tag } from "antd";
+import { Button, Table } from "antd";
 import { FiAlertCircle } from "react-icons/fi";
 import DashboardModal from "../../../Components/DashboardModal";
-import { IoMdClose } from "react-icons/io";
-const DashboardTable = () => {
+const DashboardHomeTable = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({});
   const showModal = (data) => {
@@ -65,9 +64,9 @@ const DashboardTable = () => {
     // const element = array[index];
   }
   return (
-    <div className="bg-playground rounded-lg py-[15px]">
+    <div className="bg-playground rounded-lg py-[16px]">
       <div>
-        <h3 className="text-xl font-medium text-[#464343] px-6 py-4">
+        <h3 className="text-xl font-medium text-[#464343] px-6 pb-5">
           {"Recent Transactions"}
         </h3>
         <Table
@@ -117,4 +116,4 @@ const DashboardTable = () => {
   );
 };
 
-export default DashboardTable;
+export default DashboardHomeTable;

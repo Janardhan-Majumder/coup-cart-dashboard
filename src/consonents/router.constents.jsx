@@ -21,37 +21,37 @@ export const sidebarItems = [
   },
   {
     name: "Users",
-    path: "/dashboard/users",
+    path: "/users",
     icon: LuUsers2,
   },
   {
     name: "Subscription",
-    path: "/dashboard/subscription",
+    path: "/subscription",
     icon: FaRegChessQueen,
   },
   {
     name: "Categories",
-    path: "/dashboard/categories",
+    path: "/categories",
     icon: LuCopyPlus,
   },
   {
     name: "Deals",
-    path: "/dashboard/deals",
+    path: "/deals",
     icon: MdOutlineContentPasteGo,
   },
   {
     name: "Trending Place",
-    path: "/dashboard/trending-place",
+    path: "/trending-place",
     icon: SlLocationPin,
   },
   {
     name: "Redeem",
-    path: "/dashboard/redeem",
+    path: "/redeem",
     icon: IoGiftOutline,
   },
   {
     name: "Settings",
-    path: "/dashboard/settings",
+    path: "/settings",
     icon: CiSettings,
   },
 ];
