@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Table } from "antd";
 import { FiAlertCircle } from "react-icons/fi";
-import DashboardModal from "../../../Components/DashboardModal";
+import DashboardModal from "./DashboardModal";
 const DashboardHomeTable = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({});
@@ -107,8 +107,22 @@ const DashboardHomeTable = () => {
             </div>
           </div>
           <div className="flex gap-5 pb-[40px]">
-            <Button style={{height: "44px"}} className="w-full rounded-xl font-medium">Download</Button>
-            <Button style={{height: "44px", backgroundColor: "#1F8D84", color: "white"}} className="w-full rounded-xl font-medium" >Print</Button>
+            <Button
+              style={{ height: "44px" }}
+              className="w-full rounded-xl font-medium"
+            >
+              Download
+            </Button>
+            <Button
+              style={{
+                height: "44px",
+                backgroundColor: "#1F8D84",
+                color: "white",
+              }}
+              className="w-full rounded-xl font-medium"
+            >
+              Print
+            </Button>
           </div>
         </div>
       </DashboardModal>

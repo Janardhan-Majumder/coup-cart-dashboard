@@ -1,6 +1,6 @@
 import React from "react";
-import DashboardChart from "./DashboardCahrt";
-import DashboardHomeTable from "./DashboardHomeTable";
+import DashboardChart from "../../../Components/DashboardCahrt";
+import DashboardHomeTable from "../../../Components/DashboardHomeTable";
 const items = [
   {
     label: (

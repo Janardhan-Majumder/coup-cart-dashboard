@@ -5,6 +5,7 @@ import { IoMdClose } from "react-icons/io";
 const DashboardModal = ({
   isModalOpen,
   setIsModalOpen,
+  closeIcon,
   children,
 }) => {
   //   const handleOk = () => {
@@ -27,14 +28,16 @@ const DashboardModal = ({
       }}
     >
       <div>
-        <button
-          onClick={handleCancel}
-          type="primary"
-          danger
-          className="absolute top-0 right-0 text-white bg-[#EB5757] shadow-inner px-2.5 py-2 rounded-none rounded-bl-xl rounded-tr-md"
-        >
-          <IoMdClose size={23} />
-        </button>
+        {closeIcon !== false && (
+          <button
+            onClick={handleCancel}
+            type="primary"
+            danger
+            className="absolute top-0 right-0 text-white bg-[#EB5757] shadow-inner px-2.5 py-2 rounded-none rounded-bl-xl rounded-tr-md"
+          >
+            <IoMdClose size={23} />
+          </button>
+        )}
         {children}
       </div>
     </Modal>

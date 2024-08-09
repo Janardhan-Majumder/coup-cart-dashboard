@@ -9,97 +9,15 @@ import DashboardHome from "../pages/Main/DashboardHome/DashboardHome";
 import Earnings from "../pages/Main/Earnings/Earnings";
 import Notifications from "../pages/Main/Notifications/Notifications";
 import Users from "../pages/Main/Users/Users";
+import Subscriptions from "../pages/Main/Subscriptions/Subscriptions";
+import { routesGenerators } from "../utils/routesGenerators";
+import { dashboardItems } from "../consonents/router.constents";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    children: [
-      {
-        path: "/",
-        element: <DashboardHome />,
-      },
-            {
-              path: "/earnings",
-              element: <Earnings />,
-            },
-            {
-              path: "/users",
-              element: <Users />,
-            },
-      //       {
-      //         path: "/chats",
-      //         element: <ChatList/>,
-      //       },
-      //       {
-      //         path: "/chats/:chatId",
-      //         element: <SinglePersonChatDetails/>,
-      //       },
-      //       {
-      //         path: "/chats/edit-chat/:id",
-      //         element: <EditChatCommunity />,
-      //       },
-      //       {
-      //         path: "/chats/add-chat",
-      //         element: <CreateChatCommunity />,
-      //       },
-      //       {
-      //         path: "/subscribers",
-      //         element: <Subscribers/>,
-      //       },
-      //       {
-      //         path: "/subscriptions",
-      //         element: <Subscription/>,
-      //       },
-      //       {
-      //         path: "/subscription/add-subscription",
-      //         element: <AddSubscription/>,
-      //       },
-      //       {
-      //         path: "/subscriptions/edit-subscription/:id",
-      //         element: <EditSubscription/>,
-      //       },
-      //       {
-      //         path: "/profile-information",
-      //         element: <ProfileInformation/>,
-      //       },
-      //       {
-      //         path: "/edit-profile/:id",
-      //         element: <EditProfileInformation/>,
-      //       },
-            {
-              path: "/notifications",
-              element: <Notifications/>,
-            },
-      //       {
-      //         path: "/settings",
-      //         element: <Settings/>,
-      //       },
-      //       {
-      //         path: "/settings/privacy-policy",
-      //         element: <PrivacyPolicy/>,
-      //       },
-      //       {
-      //         path: "/settings/edit-privacy-policy",
-      //         element: <EditPrivacyPolicy />,
-      //       },
-      //       {
-      //         path: "/settings/terms-conditions",
-      //         element: <TermsAndConditions/>,
-      //       },
-      //       {
-      //         path: "/settings/edit-terms-conditions",
-      //         element: <EditTermsAndCondition/>,
-      //       },
-      //       {
-      //         path: "/settings/about-us",
-      //         element: <AboutUs/>,
-      //       },
-      //       {
-      //         path: "/settings/edit-about-us",
-      //         element: <EditAboutUs/>,
-      //       },
-    ],
+    children: routesGenerators(dashboardItems),
   },
   {
     path: "/auth",

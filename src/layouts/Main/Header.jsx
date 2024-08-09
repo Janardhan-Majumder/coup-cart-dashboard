@@ -7,7 +7,7 @@ import profileImage from "../../assets/images/dash-profile.png";
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-full h-[88px] flex justify-between items-center rounded-2xl py-[16px] px-[32px] bg-[#E9F4F3]">
+    <div className="w-full h-[88px] flex justify-between items-center rounded-2xl py-[16px] px-[32px] bg-[#E9F4F3] shadow-sm">
       <div className="text-start space-y-0.5">
         <p className="text-[24px] font-semibold text-[#1F8D84]">
           {"Welcome,RJ"}

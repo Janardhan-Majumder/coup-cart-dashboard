@@ -1,12 +1,12 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/dash-logo.png";
-import { sidebarItems } from "../../consonents/router.constents";
 import { createElement } from "react";
 import { IoIosLogOut } from "react-icons/io";
+import { routeLinkGenerators } from "../../utils/routeLinkGenerators";
+import { dashboardItems } from "../../consonents/router.constents";
 const Sidebar = () => {
   const navigate = useNavigate();
   const handleLogOut = () => {};
-
   return (
     <div className="fixed top-0 left-0 w-[326px] min-h-screen flex flex-col justify-between bg-primary py-[50px]">
       <div className="space-y[24px">
@@ -14,7 +14,7 @@ const Sidebar = () => {
           <img className="w-[250px] mx-auto" src={logo} alt="" />
         </div>
         <ul className="mt-[24px] max-h-[650px] overflow-y-auto space-y-2 xl:space-y-3">
-          {sidebarItems.map(({ name, icon, path }, indx) => (
+          {routeLinkGenerators(dashboardItems).map(({ name, icon, path }, indx) => (
             <li key={indx}>
               <NavLink
                 to={path}
