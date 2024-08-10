@@ -2,6 +2,7 @@ import { Button, Form, Input, Modal } from "antd";
 import { useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
 import { LiaArrowLeftSolid } from "react-icons/lia";
+import { MdLockOutline, MdOutlineEmail } from "react-icons/md";
 import OTPInput from "react-otp-input";
 import { useNavigate } from "react-router-dom";
 
@@ -84,9 +85,12 @@ const Settings = () => {
         footer={[]}
       >
         {modalTitle === "Change Password" && (
-          <div className="px-[44px] pb-[44px]">
-            <div className="flex justify-center items-center gap-1.5 pt-[44px]">
-              <button onClick={() => setIsModalOpen(false)}>
+          <div className="px-[24px] pb-[14px]">
+            <div className="flex items-center gap-1.5 pt-[34px]">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="outline-none"
+              >
                 <LiaArrowLeftSolid size={26} />
               </button>
               <h6 className="text-2xl font-medium">{modalTitle}</h6>
@@ -102,12 +106,13 @@ const Settings = () => {
               //   maxWidth: 600,
               //   border: "4px solid red",
               // }}
+              requiredMark={false}
               layout="vertical"
-              className="space-y-6 fit-content object-contain"
               onFinish={handleChangePassword}
             >
               <Form.Item
-                name="currentPassword"
+                label={<p className="pb-1">Enter old password</p>}
+                name="oldPassword"
                 rules={[
                   {
                     required: true,
@@ -116,14 +121,16 @@ const Settings = () => {
                 ]}
               >
                 <Input.Password
+                  prefix={<MdLockOutline className="mr-2" />}
                   style={{
-                    backgroundColor: "#FFF3E6",
+                    backgroundColor: "#E9F4F3",
                   }}
-                  placeholder="Current Password"
                   className="p-4 rounded-lg h-[56px]  placeholder:text-[#999999]"
+                  placeholder="Enter old Password"
                 />
               </Form.Item>
               <Form.Item
+                label={<p className="pb-1">Enter new password</p>}
                 name="newPassword"
                 rules={[
                   {
@@ -133,19 +140,22 @@ const Settings = () => {
                 ]}
               >
                 <Input.Password
+                  prefix={<MdLockOutline className="mr-2" />}
                   style={{
-                    backgroundColor: "#FFF3E6",
+                    backgroundColor: "#E9F4F3",
                   }}
-                  placeholder="Set your password"
-                  className="p-4 rounded-lg h-[56px]  placeholder:text-[#999999]"
+                  className="rounded-lg h-[56px]  placeholder:text-[#999999]"
+                  placeholder="Set new password"
                 />
               </Form.Item>
               <Form.Item
+                label={<p className="pb-1">Re-enter new password</p>}
                 name="reenterPassword"
                 dependencies={["newPassword"]}
                 rules={[
                   {
                     required: true,
+                    message: "Please Input Your Password!",
                   },
                   ({ getFieldValue }) => ({
                     validator(_, value) {
@@ -162,30 +172,28 @@ const Settings = () => {
                 ]}
               >
                 <Input.Password
+                  prefix={<MdLockOutline className="mr-2" />}
                   style={{
-                    backgroundColor: "#FFF3E6",
+                    backgroundColor: "#E9F4F3",
                   }}
+                  className="p-4 rounded-lg h-[56px]  placeholder:text-[#999999]"
                   placeholder="Re-enter your password"
-                  className="p-4 rounded-lg h-[56px] text-[#999999]"
                 />
               </Form.Item>
-              <p className="text-center">
-                <Button
-                  style={{
-                    color: "#FF8400",
-                  }}
-                  type="link"
-                  className="text-[16px]"
-                  onClick={() => setModalTitle("Forget Password")}
-                  // onClick={() => navigate("/auth/forget-password")}
-                >
-                  Forget Password?
-                </Button>
-              </p>
+              <button
+                style={{
+                  color: "#1F8D84",
+                }}
+                type="link"
+                className="text-[16px] -mt-3 mb-3 outline-none text-[#1F8D84]"
+                onClick={() => setModalTitle("Forget Password")}
+              >
+                Forget Password?
+              </button>
               <Form.Item>
                 <Button
                   style={{
-                    backgroundColor: "#FF8400",
+                    backgroundColor: "#1F8D84",
                     color: "#fff",
                   }}
                   htmlType="submit"
@@ -198,14 +206,17 @@ const Settings = () => {
           </div>
         )}
         {modalTitle === "Forget Password" && (
-          <div className="px-[44px] pb-[44px]">
-            <div className="flex justify-center items-center gap-1.5 pt-[44px]">
-              <button onClick={() => setModalTitle("Change Password")}>
+          <div className="px-[24px] pb-[14px]">
+            <div className="flex items-center gap-1.5 pt-[34px]">
+              <button
+                onClick={() => setModalTitle("Change Password")}
+                className="outline-none"
+              >
                 <LiaArrowLeftSolid size={26} />
               </button>
               <h6 className="text-2xl font-medium">{modalTitle}</h6>
             </div>
-            <p className="text-[16px] my-[24px] text-center">
+            <p className="text-[16px] my-[20px]">
               Please enter your email address to reset your password.
             </p>
             <Form
@@ -213,9 +224,11 @@ const Settings = () => {
               onFinish={handleForgetPassword}
               autoComplete="off"
               layout="vertical"
+              requiredMark={false}
               className="space-y-8 fit-content object-contain"
             >
               <Form.Item
+                label={<p className="py-1">Enter your email</p>}
                 name="email"
                 rules={[
                   {
@@ -226,17 +239,18 @@ const Settings = () => {
                 ]}
               >
                 <Input
+                  prefix={<MdOutlineEmail className="mr-2" />}
                   style={{
-                    backgroundColor: "#FFF3E6",
+                    backgroundColor: "#E9F4F3",
                   }}
+                  className="p-4 rounded-lg h-[56px]  placeholder:text-[#999999]"
                   placeholder="Enter your email"
-                  className="p-4 rounded-lg h-[56px] placeholder:text-[#999999]"
                 />
               </Form.Item>
               <Form.Item>
                 <Button
                   style={{
-                    backgroundColor: "#FF8400",
+                    backgroundColor: "#1F8D84",
                     color: "#fff",
                     height: "56 px",
                   }}
@@ -250,21 +264,21 @@ const Settings = () => {
           </div>
         )}
         {modalTitle === "Verify Email" && (
-          <div className="px-[44px] pb-[44px]">
-            <div className="flex justify-center items-center gap-1.5 pt-[44px]">
+          <div className="px-[24px] pb-[14px]">
+            <div className="flex items-center gap-1.5 pt-[34px]">
               <button onClick={() => setModalTitle("Forget Password")}>
                 <LiaArrowLeftSolid size={26} />
               </button>
               <h6 className="text-2xl font-medium">{modalTitle}</h6>
             </div>
-            <p className="text-[16px] my-[24px] text-center">
+            <p className="text-[16px] my-[24px]">
               Please enter the otp we have sent you in your email.
             </p>
             <Form
               form={form}
               autoComplete="off"
               layout="vertical"
-              className="space-y-8 fit-content object-contain"
+              className="space-y-4"
               onFinish={handleVerifyOtp}
             >
               <div className="">
@@ -276,9 +290,9 @@ const Settings = () => {
                     height: "55px",
                     width: "40px",
                     margin: "auto",
-                    background: "#FFF3E6",
-                    border: "1px solid #FFAD54",
-                    marginRight: "4px",
+                    // background: "#FFF3E6",
+                    border: "1px solid #1F8D84",
+                    marginRight: "10px",
                     outline: "none",
                     borderRadius: "8px",
                     color: "black",
@@ -287,10 +301,23 @@ const Settings = () => {
                   renderInput={(props) => <input {...props} />}
                 />
               </div>
+              <div className="flex justify-between items-center">
+                <p>Didn’t receive the code?</p>
+                <button
+                  style={{
+                    color: "#1F8D84",
+                  }}
+                  type="button"
+                  className="text-[16px] outline-none text-[#1F8D84] hover:text-[#1f6e8d]"
+                  // onClick={() => setModalTitle("Forget Password")}
+                >
+                  Resend
+                </button>
+              </div>
               <Form.Item>
                 <Button
                   style={{
-                    backgroundColor: "#FF8400",
+                    backgroundColor: "#1F8D84",
                     color: "#fff",
                     height: "56 px",
                   }}
@@ -304,8 +331,8 @@ const Settings = () => {
           </div>
         )}
         {modalTitle === "Reset Password" && (
-          <div className="px-[44px] pb-[44px]">
-            <div className="flex justify-center items-center gap-1.5 pt-[44px]">
+          <div className="px-[24px] pb-[14px]">
+            <div className="flex items-center gap-1.5 pt-[34px]">
               <button onClick={() => setModalTitle("Verify Email")}>
                 <LiaArrowLeftSolid size={26} />
               </button>
@@ -322,11 +349,13 @@ const Settings = () => {
               //   maxWidth: 600,
               //   border: "4px solid red",
               // }}
+              requiredMark={false}
               layout="vertical"
               className="space-y-6 fit-content object-contain"
               onFinish={handleChangePassword}
             >
               <Form.Item
+                label={<p className="pb-1">Enter new password</p>}
                 name="newPassword"
                 rules={[
                   {
@@ -336,19 +365,22 @@ const Settings = () => {
                 ]}
               >
                 <Input.Password
+                  prefix={<MdLockOutline className="mr-2" />}
                   style={{
-                    backgroundColor: "#FFF3E6",
+                    backgroundColor: "#E9F4F3",
                   }}
-                  placeholder="Set your password"
-                  className="p-4 rounded-lg h-[56px]  placeholder:text-[#999999]"
+                  className="rounded-lg h-[56px]  placeholder:text-[#999999]"
+                  placeholder="Set new password"
                 />
               </Form.Item>
               <Form.Item
+                label={<p className="pb-1">Re-enter new password</p>}
                 name="reenterPassword"
                 dependencies={["newPassword"]}
                 rules={[
                   {
                     required: true,
+                    message: "Please Input Your Password!",
                   },
                   ({ getFieldValue }) => ({
                     validator(_, value) {
@@ -365,17 +397,18 @@ const Settings = () => {
                 ]}
               >
                 <Input.Password
+                  prefix={<MdLockOutline className="mr-2" />}
                   style={{
-                    backgroundColor: "#FFF3E6",
+                    backgroundColor: "#E9F4F3",
                   }}
+                  className="p-4 rounded-lg h-[56px]  placeholder:text-[#999999]"
                   placeholder="Re-enter your password"
-                  className="p-4 rounded-lg h-[56px] text-[#999999]"
                 />
               </Form.Item>
               <Form.Item>
                 <Button
                   style={{
-                    backgroundColor: "#FF8400",
+                    backgroundColor: "#1F8D84",
                     color: "#fff",
                   }}
                   htmlType="submit"

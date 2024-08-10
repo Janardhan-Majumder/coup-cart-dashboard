@@ -30,7 +30,7 @@ const EditMyProfile = () => {
   console.log(code);
 
   return (
-    <div className="space-y-[24px]">
+    <div className="space-y-[34px]">
       <PageHeading
         title={"Edit Personal information"}
         backPath={"/settings/personal-information"}
@@ -47,7 +47,7 @@ const EditMyProfile = () => {
           email: profileData.email,
         }}
       >
-        <div className="col-span-4 min-h-[365px] flex flex-col items-center justify-center bg-[#E9F4F3] p-8 rounded-lg border border-[#1F8D84] space-y-4 shadow-inner">
+        <div className="col-span-4 h-[365px] flex flex-col items-center justify-center bg-[#E9F4F3] p-8 rounded-lg border border-[#1F8D84] space-y-4 shadow-inner">
           <div className="my-3 relative">
             <div className="h-full w-full absolute inset-0 bg-[#222222bb] rounded-full flex justify-center items-center text-white cursor-pointer">
               <PiCameraPlus size={34} />
