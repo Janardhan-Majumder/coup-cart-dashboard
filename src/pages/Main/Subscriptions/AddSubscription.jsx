@@ -2,6 +2,7 @@ import { Button, Form, Input, Space } from "antd";
 import React from "react";
 import { BiMinus, BiMinusCircle } from "react-icons/bi";
 import { FaChevronLeft } from "react-icons/fa6";
+import { PiCurrencyDollar } from "react-icons/pi";
 import { TiPlusOutline } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
 
@@ -65,6 +66,7 @@ const AddSubscription = () => {
               />
             </Form.Item>
             <Form.Item
+
               label={
                 <span className="text-[18px] text-[#1F8D84]">
                   Package Amount
@@ -80,6 +82,12 @@ const AddSubscription = () => {
             >
               <Input
                 onChange={handleChange}
+                prefix={
+                  <PiCurrencyDollar
+                    className=""
+                    size={18}
+                  />
+                }
                 placeholder="Package amount"
                 style={{
                   border: "1px solid #98CBC6",

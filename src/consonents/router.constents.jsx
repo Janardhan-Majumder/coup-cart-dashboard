@@ -20,6 +20,8 @@ import EditSubscriptions from "../pages/Main/Subscriptions/EditSubscription";
 import AddSubscription from "../pages/Main/Subscriptions/AddSubscription";
 import AddCategory from "../pages/Main/Categories/AddCategory";
 import EditCategory from "../pages/Main/Categories/EditCategory";
+import AddDeal from "../pages/Main/Deals/AddDeal";
+import EditDeal from "../pages/Main/Deals/EditDeals";
 
 export const dashboardItems = [
   {
@@ -73,6 +75,14 @@ export const dashboardItems = [
     path: "/deals",
     icon: MdOutlineContentPasteGo,
     element: <Deals />,
+  },
+  {
+    path: "/deals/add-new",
+    element: <AddDeal />,
+  },
+  {
+    path: "/deals/edit/:id",
+    element: <EditDeal />,
   },
   {
     name: "Trending Place",
