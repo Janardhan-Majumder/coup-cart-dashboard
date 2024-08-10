@@ -3,6 +3,7 @@ import { useMemo, useRef, useState } from "react";
 import JoditEditor from "jodit-react";
 import { LiaArrowLeftSolid } from "react-icons/lia";
 import { useNavigate } from "react-router-dom";
+import PageHeading from "../../Components/PageHeading";
 
 const EditTermsConditions = () => {
   const navigate = useNavigate();
@@ -13,20 +14,15 @@ const EditTermsConditions = () => {
     () => ({
       readonly: false,
       placeholder: placeholder || "Start typing...",
-      height: "70vh",
+      height: "60vh",
     }),
     [placeholder]
   );
   console.log(content);
   return (
-    <div className="min-h-full flex flex-col justify-between">
-      <div className="space-y-4 ">
-        <div className="flex items-center gap-1.5">
-          <button onClick={() => navigate("/settings/terms-conditions")}>
-            <LiaArrowLeftSolid size={26} />
-          </button>
-          <h6 className="text-2xl font-medium">Edit Terms & Conditions</h6>
-        </div>
+    <div className="min-h-[75vh] flex flex-col justify-between">
+      <div className="space-y-6">
+        <PageHeading title={"Edit Terms & Conditions"} backPath={"/settings/terms-conditions"}/>
         <div className="">
           <JoditEditor
             ref={editor}
