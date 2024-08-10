@@ -18,6 +18,8 @@ import Redeem from "../pages/Main/Redeem/Redeem";
 import Setting from "../pages/Setting/Setting";
 import EditSubscriptions from "../pages/Main/Subscriptions/EditSubscription";
 import AddSubscription from "../pages/Main/Subscriptions/AddSubscription";
+import AddCategory from "../pages/Main/Categories/AddCategory";
+import EditCategory from "../pages/Main/Categories/EditCategory";
 
 export const dashboardItems = [
   {
@@ -57,6 +59,14 @@ export const dashboardItems = [
     path: "/categories",
     icon: LuCopyPlus,
     element: <Categories />,
+  },
+  {
+    path: "/categories/add-new",
+    element: <AddCategory />,
+  },
+  {
+    path: "/categories/edit/:id",
+    element: <EditCategory />,
   },
   {
     name: "Deals",
