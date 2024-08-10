@@ -16,7 +16,7 @@
 
 /* css of ant design table style  */
 .ant-table-wrapper table {
-  background-color: #eef8ef;
+  background-color: #E9F4F3;
   border-radius: 0;
 }
 :where(.css-dev-only-do-not-override-d2lrxs).ant-table-wrapper
@@ -86,3 +86,24 @@
   color: #4e4e4e;
 }
 
+
+/* phone Input */
+.PhoneInputInput {
+  outline: none;
+  background-color: #E9F4F3;
+  padding: 14px 12px;
+  color: #222222;
+  border-radius: 8px;
+  border: 1px solid #1F8D84;
+  margin-left: 10px;
+}
+
+.PhoneInputCountry {
+  margin-right: 15px !important;
+  display: flex !important;
+  gap: 15px;
+  background-color: #E9F4F3;
+  padding: 14px 14px 14px 18px;
+  border-radius: 8px;
+  border: 1px solid #1F8D84;
+}

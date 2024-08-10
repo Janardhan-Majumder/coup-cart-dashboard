@@ -1,4 +1,3 @@
-import { BiSolidDashboard } from "react-icons/bi";
 import { CiSettings } from "react-icons/ci";
 import { IoGiftOutline } from "react-icons/io5";
 import { LuCopyPlus, LuUsers2 } from "react-icons/lu";
@@ -15,13 +14,15 @@ import Categories from "../pages/Main/Categories/Categories";
 import Deals from "../pages/Main/Deals/Deals";
 import TrendingPlace from "../pages/Main/TrendingPlace/TrendingPlace";
 import Redeem from "../pages/Main/Redeem/Redeem";
-import Setting from "../pages/Setting/Setting";
 import EditSubscriptions from "../pages/Main/Subscriptions/EditSubscription";
 import AddSubscription from "../pages/Main/Subscriptions/AddSubscription";
 import AddCategory from "../pages/Main/Categories/AddCategory";
 import EditCategory from "../pages/Main/Categories/EditCategory";
 import AddDeal from "../pages/Main/Deals/AddDeal";
 import EditDeal from "../pages/Main/Deals/EditDeals";
+import Settings from "../pages/Settings/Settings";
+import MyProfile from "../pages/Profile/MyProfile";
+import EditMyProfile from "../pages/Profile/EditMyProfile";
 
 export const dashboardItems = [
   {
@@ -100,6 +101,14 @@ export const dashboardItems = [
     name: "Settings",
     path: "/settings",
     icon: CiSettings,
-    element: <Setting />,
+    element: <Settings />,
+  },
+  {
+    path: "/settings/personal-information",
+    element: <MyProfile />,
+  },
+  {
+    path: "/settings/personal-information/edit",
+    element: <EditMyProfile />,
   },
 ];
