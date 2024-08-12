@@ -8,7 +8,7 @@ const TermsConditions = () => {
   return (
     <div className="min-h-[70vh] flex flex-col justify-between">
       <div className="space-y-4">
-        <PageHeading title={"Terms & Conditions"}/>
+        <PageHeading title={"Terms & Conditions"} />
         <div className="space-y-4 ">
           <p>
             Lorem ipsum dolor sit amet consectetur. Fringilla a cras vitae orci.
@@ -55,10 +55,11 @@ const TermsConditions = () => {
         <Button
           onClick={() => navigate("edit")}
           style={{
-            backgroundColor: "#FF8400",
-            color: "white",
+            backgroundColor: "#1F8D84",
+            color: "#fff",
           }}
-          className="w-[484px] h-[60px] py-3 rounded-lg text-[18px] font-medium  duration-200"
+          htmlType="submit"
+          className="w-[400px] h-[56px]  placeholder:text-[#999999] text-[18px] font-medium"
         >
           Edit
         </Button>

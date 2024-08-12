@@ -25,6 +25,10 @@ import MyProfile from "../pages/Profile/MyProfile";
 import EditMyProfile from "../pages/Profile/EditMyProfile";
 import TermsConditions from "../pages/Settings/TermsConditions";
 import EditTermsConditions from "../pages/Settings/EditTermsConditions";
+import PrivacyPolicy from "../pages/Settings/PrivacyPolicy";
+import EditPrivacyPolicy from "../pages/Settings/EditPrivacyPolicy";
+import EditAboutUs from "../pages/Settings/EditAboutUs";
+import AboutUs from "../pages/Settings/AboutUs";
 
 export const dashboardItems = [
   {
@@ -120,5 +124,21 @@ export const dashboardItems = [
   {
     path: "/settings/terms-conditions/edit",
     element: <EditTermsConditions />,
+  },
+  {
+    path: "/settings/privacy-policy",
+    element: <PrivacyPolicy />,
+  },
+  {
+    path: "/settings/privacy-policy/edit",
+    element: <EditPrivacyPolicy />,
+  },
+  {
+    path: "/settings/about-us",
+    element: <AboutUs />,
+  },
+  {
+    path: "/settings/about-us/edit",
+    element: <EditAboutUs />,
   },
 ];

@@ -1,18 +1,13 @@
 import { Button } from "antd";
-import { LiaArrowLeftSolid } from "react-icons/lia";
 import { useNavigate } from "react-router-dom";
+import PageHeading from "../../Components/PageHeading";
 
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
   return (
-    <div className="min-h-full flex flex-col justify-between">
+    <div className="min-h-[70vh] flex flex-col justify-between">
       <div className="space-y-4">
-        <div className="flex items-center gap-1.5">
-          <button onClick={() => navigate("/settings")}>
-            <LiaArrowLeftSolid size={26} />
-          </button>
-          <h6 className="text-2xl font-medium">Privacy Policy</h6>
-        </div>
+        <PageHeading title={"Privacy Policy"} />
         <div className="space-y-4 ">
           <p>
             Lorem ipsum dolor sit amet consectetur. Fringilla a cras vitae orci.
@@ -57,12 +52,13 @@ const PrivacyPolicy = () => {
       </div>
       <div className="flex justify-end pt-10">
         <Button
-          onClick={() => navigate("/settings/edit-privacy-policy")}
+          onClick={() => navigate("edit")}
           style={{
-            backgroundColor: "#FF8400",
-            color: "white",
+            backgroundColor: "#1F8D84",
+            color: "#fff",
           }}
-          className="w-[484px] h-[60px] py-3 rounded-lg text-[18px] font-medium  duration-200"
+          htmlType="submit"
+          className="w-[400px] h-[56px]  placeholder:text-[#999999] text-[18px] font-medium"
         >
           Edit
         </Button>
@@ -70,4 +66,5 @@ const PrivacyPolicy = () => {
     </div>
   );
 };
+
 export default PrivacyPolicy;
