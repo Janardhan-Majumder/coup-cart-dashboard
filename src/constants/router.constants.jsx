@@ -29,6 +29,7 @@ import PrivacyPolicy from "../pages/Settings/PrivacyPolicy";
 import EditPrivacyPolicy from "../pages/Settings/EditPrivacyPolicy";
 import EditAboutUs from "../pages/Settings/EditAboutUs";
 import AboutUs from "../pages/Settings/AboutUs";
+import Notifications from "../pages/Main/Notifications/Notifications";
 
 export const dashboardItems = [
   {
@@ -42,6 +43,10 @@ export const dashboardItems = [
     path: "/earnings",
     icon: GrMoney,
     element: <Earnings />,
+  },
+  {
+    path: "/notifications",
+    element: <Notifications />,
   },
   {
     name: "Users",

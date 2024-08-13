@@ -47,7 +47,7 @@ const SignIn = () => {
           />
         </Form.Item>
         <Form.Item
-          className="text-start"
+          className="text-start mt-2"
           name="password"
           rules={[
             {

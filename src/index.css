@@ -11,12 +11,12 @@
 
 /* css of ant design modal style  */
 .ant-modal .ant-modal-content {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 /* css of ant design table style  */
 .ant-table-wrapper table {
-  background-color: #E9F4F3;
+  background-color: #e9f4f3;
   border-radius: 0;
 }
 :where(.css-dev-only-do-not-override-d2lrxs).ant-table-wrapper
@@ -39,10 +39,7 @@
   border-start-start-radius: 0px;
   padding-left: 24px;
 }
-.ant-table-wrapper
-  .ant-table-tbody
-  > tr:first-child
-  > *:first-child {
+.ant-table-wrapper .ant-table-tbody > tr:first-child > *:first-child {
   padding-left: 24px;
 }
 
@@ -56,10 +53,7 @@
   text-align: center;
 }
 
-.ant-table-wrapper
-  .ant-table-tbody
-  > tr
-  > td {
+.ant-table-wrapper .ant-table-tbody > tr > td {
   border-bottom: 0;
 }
 .ant-table-wrapper
@@ -86,15 +80,14 @@
   color: #4e4e4e;
 }
 
-
 /* phone Input */
 .PhoneInputInput {
   outline: none;
-  background-color: #E9F4F3;
+  background-color: #e9f4f3;
   padding: 14px 12px;
   color: #222222;
   border-radius: 8px;
-  border: 1px solid #1F8D84;
+  border: 1px solid #1f8d84;
   margin-left: 10px;
 }
 
@@ -102,8 +95,13 @@
   margin-right: 15px !important;
   display: flex !important;
   gap: 15px;
-  background-color: #E9F4F3;
+  background-color: #e9f4f3;
   padding: 14px 14px 14px 18px;
   border-radius: 8px;
-  border: 1px solid #1F8D84;
+  border: 1px solid #1f8d84;
+}
+
+/* responsive sidebar styles */
+.ant-menu {
+  background-color: none;
 }

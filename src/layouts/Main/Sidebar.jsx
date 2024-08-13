@@ -3,7 +3,7 @@ import logo from "../../assets/images/dash-logo.png";
 import { createElement } from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { routeLinkGenerators } from "../../utils/routeLinkGenerators";
-import { dashboardItems } from "../../consonents/router.constents";
+import { dashboardItems } from "../../constants/router.constants";
 const Sidebar = () => {
   const navigate = useNavigate();
   const handleLogOut = () => {};
@@ -13,7 +13,7 @@ const Sidebar = () => {
         <div className="px-[38px]">
           <img className="w-[250px] mx-auto" src={logo} alt="" />
         </div>
-        <ul className="mt-[24px] max-h-[650px] overflow-y-auto space-y-2 xl:space-y-3">
+        <ul className="mt-[24px] max-h-[650px] overflow-y-auto space-y-1 xl:space-y-2">
           {routeLinkGenerators(dashboardItems).map(({ name, icon, path }, indx) => (
             <li key={indx}>
               <NavLink
@@ -21,9 +21,9 @@ const Sidebar = () => {
                 className={({ isActive }) =>
                   isActive
                     ? "bg-white text-[#1F8D84]" +
-                      " w-full px-10 py-4 flex items-center justify-start gap-3 text-lg transition-all"
+                      " w-full px-10 py-4 flex items-center justify-start gap-5 text-lg transition-all"
                     : "text-white hover:text-[#1F8D84] text-[20px] hover:bg-white" +
-                      " w-full px-10 py-4 flex items-center justify-start gap-6 text-lg transition-all"
+                      " w-full px-10 py-4 flex items-center justify-start gap-5 text-lg transition-all"
                 }
               >
                 <div>{createElement(icon, { size: "20" })}</div>

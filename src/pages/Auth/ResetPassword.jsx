@@ -44,13 +44,12 @@ const ResetPassword = () => {
               outline: "none",
               color: "#646262",
               padding: "16px 12px",
-              marginBottom: "10px",
             }}
             placeholder="Set your password"
           />
         </Form.Item>
         <Form.Item
-          className="text-start"
+          className="text-start mt-2"
           rules={[
             {
               required: true,
@@ -67,7 +66,6 @@ const ResetPassword = () => {
               outline: "none",
               color: "#646262",
               padding: "16px 12px",
-              marginBottom: "10px",
             }}
             placeholder="Re-enter your password"
           />

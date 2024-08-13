@@ -69,7 +69,8 @@ const Users = () => {
   }
   return (
     <div className="bg-[#E9F4F3] rounded-lg py-[16px]">
-      <div>
+      {/* <div className="w-screen overflow-x-auto"> */}
+      <div className="">
         <div className="px-6 pb-5 flex justify-between items-center">
           <h3 className="text-xl font-medium text-[#464343]">{"User List"}</h3>
           <div className="flex justify-end gap-x-4">
