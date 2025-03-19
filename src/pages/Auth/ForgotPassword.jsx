@@ -1,14 +1,40 @@
-import React from "react";
 import { Button, Form, Input } from "antd";
-import { useNavigate } from "react-router-dom";
 import { RxArrowLeft } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
+import { useForgotPasswordMutation } from "../../redux/features/auth/authApi";
+import { ErrorSwal, SuccessSwal } from "../../utils/allSwalFire";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
-  const onFinish = (values) => {
-    // console.log("Success:", values);
-    navigate("/auth/verify-email");
+
+  const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
+
+  const onFinish = async (values) => {
+    // const { email } = values;
+
+    try {
+      const response = await forgotPassword(values).unwrap();
+      console.log(response);
+
+      SuccessSwal({
+        title: "Success",
+        text: response.data.message || response.message || "Success",
+      });
+
+      navigate(`/auth/verify-email`);
+    } catch (error) {
+      ErrorSwal({
+        title: "",
+        text: error.data.message || error.data || "Something went wrong!",
+      });
+    }
+
+    // navigate(`/auth/verify-email`);
   };
+  // const onFinish = (values) => {
+  //   // console.log("Success:", values);
+  //   navigate("/auth/verify-email");
+  // };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -67,6 +93,7 @@ const ForgotPassword = () => {
               color: "#ffff",
             }}
             htmlType="submit"
+            loading={isLoading}
             className="w-full h-[56px] px-2 font-medium rounded-lg mt-[10px]"
           >
             Send OTP

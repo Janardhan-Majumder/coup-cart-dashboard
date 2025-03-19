@@ -1,13 +1,42 @@
-import React from "react";
 import { Button, Form, Input } from "antd";
-import { useNavigate } from "react-router-dom";
 import { RxArrowLeft } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
+import { useResetPasswordMutation } from "../../redux/features/auth/authApi";
+import { ErrorSwal, SuccessSwal } from "../../utils/allSwalFire";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const [resetPass, { isLoading }] = useResetPasswordMutation();
+
+  const onFinish = async (values) => {
+    // const token = localStorage.getItem("token");
+
+    const password = values.rePassword;
+
+    try {
+      const response = await resetPass({
+        // id: email,
+        // token,
+        password: password,
+      }).unwrap();
+
+      SuccessSwal({
+        title: "Success",
+        text: response.message || "Password reset successfully!",
+      });
+
+      navigate("/auth");
+    } catch (error) {
+      ErrorSwal({
+        title: "",
+        text: error.data.message || error.data || "Something went wrong!",
+      });
+    }
   };
+
+  // const onFinish = (values) => {
+  //   console.log("Success:", values);
+  // };
   return (
     <div className="w-[451px] bg-[#BADCD9] py-[64px] px-[44px] rounded-2xl space-y-6">
       <div className="flex justify-center items-center gap-1">
@@ -79,6 +108,7 @@ const ResetPassword = () => {
               color: "#ffff",
             }}
             htmlType="submit"
+            loading={isLoading}
             className="w-full h-[56px] px-2 font-medium rounded-lg "
           >
             Reset Password
