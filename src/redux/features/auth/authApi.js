@@ -17,7 +17,7 @@ export const authApi = baseApi.injectEndpoints({
     forgotPassword: builder.mutation({
       query: (data) => {
         return {
-          url: `/auth/forgot`,
+          url: `/v1/auth/forgot-password`,
           method: "POST",
           body: data,
         };
@@ -27,12 +27,12 @@ export const authApi = baseApi.injectEndpoints({
 
     // 03. verify email
     verifyEmail: builder.mutation({
-      query: ({ userId, code }) => {
+      query: ({ code }) => {
         return {
-          url: `otp/verify`,
+          url: `/v1/auth/verify-email`,
           method: "POST",
           // headers: { Authorization: `Bearer ${token}` },
-          body: { code, userId },
+          body: { oneTimeCode: code },
         };
       },
       invalidatesTags: ["auth"],
@@ -42,7 +42,7 @@ export const authApi = baseApi.injectEndpoints({
     resetPassword: builder.mutation({
       query: ({ token, password }) => {
         return {
-          url: `auth/password/forget`,
+          url: `/v1/auth/reset-password`,
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
           body: { password: password },

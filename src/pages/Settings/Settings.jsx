@@ -186,7 +186,7 @@ const Settings = () => {
                 }}
                 type="link"
                 className="text-[16px] -mt-3 mb-3 outline-none text-[#1F8D84]"
-                onClick={() => setModalTitle("Forget Password")}
+                onClick={() => navigate("/auth/forgot-password")}
               >
                 Forget Password?
               </button>

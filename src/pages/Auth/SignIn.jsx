@@ -15,9 +15,9 @@ const SignIn = () => {
   const onFinish = async (values) => {
     try {
       const response = await nizamLogin(values).unwrap();
-      console.log(response);
+      // console.log(response?.data?.tokens?.access?.token);
 
-      localStorage.setItem("token", response?.data?.token);
+      localStorage.setItem("token", response?.data?.tokens?.access?.token);
 
       dispatch(
         setLogin({
