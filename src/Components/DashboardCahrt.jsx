@@ -1,15 +1,8 @@
 import { Button, Dropdown } from "antd";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa6";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Rectangle,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Bar, BarChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
+import { useGetEarningsQuery } from "../redux/features/dashboard/dashboardApi";
 
 const DashboardChart = () => {
   const [cartYear, setCartYear] = useState("Select Year");
@@ -82,56 +75,61 @@ const DashboardChart = () => {
       key: 8,
     },
   ];
-  const chart = [
-    {
-      name: "Jan",
-      earn: 500,
-    },
-    {
-      name: "Feb",
-      earn: 700,
-    },
-    {
-      name: "Mar",
-      earn: 40,
-    },
-    {
-      name: "Apr",
-      earn: 900,
-    },
-    {
-      name: "May",
-      earn: 672,
-    },
-    {
-      name: "Jun",
-      earn: 300,
-    },
-    {
-      name: "Jul",
-      earn: 800,
-    },
-    {
-      name: "Aug",
-      earn: 400,
-    },
-    {
-      name: "Sep",
-      earn: 250,
-    },
-    {
-      name: "Oct",
-      earn: 710,
-    },
-    {
-      name: "Nov",
-      earn: 310,
-    },
-    {
-      name: "Dec",
-      earn: 840,
-    },
-  ];
+  // const chart = [
+  //   {
+  //     name: "Jan",
+  //     earn: 500,
+  //   },
+  //   {
+  //     name: "Feb",
+  //     earn: 700,
+  //   },
+  //   {
+  //     name: "Mar",
+  //     earn: 40,
+  //   },
+  //   {
+  //     name: "Apr",
+  //     earn: 900,
+  //   },
+  //   {
+  //     name: "May",
+  //     earn: 672,
+  //   },
+  //   {
+  //     name: "Jun",
+  //     earn: 300,
+  //   },
+  //   {
+  //     name: "Jul",
+  //     earn: 800,
+  //   },
+  //   {
+  //     name: "Aug",
+  //     earn: 400,
+  //   },
+  //   {
+  //     name: "Sep",
+  //     earn: 250,
+  //   },
+  //   {
+  //     name: "Oct",
+  //     earn: 710,
+  //   },
+  //   {
+  //     name: "Nov",
+  //     earn: 310,
+  //   },
+  //   {
+  //     name: "Dec",
+  //     earn: 840,
+  //   },
+  // ];
+
+  const { data } = useGetEarningsQuery();
+  const chart = data?.data?.monthlyEarnings;
+  console.log(data?.data?.monthlyEarnings);
+
   return (
     <div className="bg-playground rounded-lg px-[24px] py-[15px]">
       <div className="flex justify-between items-center">
@@ -166,7 +164,7 @@ const DashboardChart = () => {
         />
         <Tooltip />
         <XAxis
-          dataKey="name"
+          dataKey="month"
           tick={{ stroke: "#464343", strokeWidth: 0.5 }}
           style={{ fontWeight: "350", color: "#464343" }}
         />
@@ -178,7 +176,7 @@ const DashboardChart = () => {
           style={{ fontWeight: "350", color: "#464343" }}
         />
         <Bar
-          dataKey="earn"
+          dataKey="totalEarnings"
           fill="#1F8D84"
           barSize={26}
           // activeBar={<Rectangle fill="pink" stroke="green" />}

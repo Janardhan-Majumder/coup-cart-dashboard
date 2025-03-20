@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import { Button, DatePicker, Input, Table } from "antd";
+import { useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
-import DashboardModal from "../../../Components/DashboardModal";
 import { IoSearch } from "react-icons/io5";
+import DashboardModal from "../../../Components/DashboardModal";
 
 const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
