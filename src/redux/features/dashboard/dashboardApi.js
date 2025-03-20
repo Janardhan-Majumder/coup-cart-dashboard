@@ -5,7 +5,7 @@ export const dashboardApi = baseApi.injectEndpoints({
     // DashboardHome page
     getTotalCounts: builder.query({
       query: () => ({
-        url: "v1/dashboard",
+        url: "/v1/dashboard",
         method: "GET",
       }),
       providesTags: ["dashboard"],
@@ -13,7 +13,7 @@ export const dashboardApi = baseApi.injectEndpoints({
     // Earning in DashboardHome page
     getEarnings: builder.query({
       query: () => ({
-        url: `v1/dashboard/monthly-earnings`,
+        url: `/v1/dashboard/monthly-earnings`,
         method: "GET",
         // headers: { Authorization: `Bearer ${token}` },
       }),
@@ -22,7 +22,7 @@ export const dashboardApi = baseApi.injectEndpoints({
 
     getAllUsers: builder.query({
       query: () => ({
-        url: ``,
+        url: `/v1/users/getAll`,
         method: "GET",
       }),
       providesTags: ["dashboard"],
