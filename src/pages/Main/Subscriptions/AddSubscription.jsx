@@ -1,19 +1,42 @@
-import { Button, Form, Input, Space } from "antd";
-import React from "react";
-import { BiMinus, BiMinusCircle } from "react-icons/bi";
+import { Button, Form, Input, message } from "antd";
+import { BiMinus } from "react-icons/bi";
 import { FaChevronLeft } from "react-icons/fa6";
 import { PiCurrencyDollar } from "react-icons/pi";
 import { TiPlusOutline } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
+import { useAddSubscriptionMutation } from "../../../redux/features/subscription/subscriptionApi";
+import { SuccessSwal } from "../../../utils/allSwalFire";
 
 const AddSubscription = () => {
   const navigate = useNavigate();
+
+  const [addSubscription, { isLoading }] = useAddSubscriptionMutation();
+
   const handleAddSubscription = async (values) => {
-    console.log(values);
+    try {
+      // Transform the featureList array
+      const transformedFeatureList = values.featureList.map(
+        (item) => item.first
+      );
+
+      // Create the payload with the transformed featureList
+      const payload = {
+        ...values,
+        featureList: transformedFeatureList,
+      };
+
+      const response = await addSubscription(payload);
+      console.log(response);
+      SuccessSwal({
+        title: "",
+        text: response?.data?.message || " Subscription Added Successfully ",
+      });
+      // message.success("Subscription added successfully");
+    } catch (error) {
+      message.error("Failed to add Subscription");
+    }
   };
-  const handleChange = () => {
-    console.log("changed");
-  };
+
   return (
     <div className="space-y-[24px]">
       <div className=" text-[#1F8D84] flex items-center gap-1">
@@ -35,7 +58,6 @@ const AddSubscription = () => {
           ],
         }}
         onFinish={handleAddSubscription}
-        //   onFinishFailed={handleCompanyInformationFailed}
         autoComplete="off"
         requiredMark={false}
         className="min-h-[70vh] flex flex-col justify-between px-[34px] py-[14px]"
@@ -46,7 +68,7 @@ const AddSubscription = () => {
               label={
                 <span className="text-[18px] text-[#1F8D84]">Package Name</span>
               }
-              name={"name"}
+              name={"packageName"}
               rules={[
                 {
                   required: true,
@@ -55,7 +77,6 @@ const AddSubscription = () => {
               ]}
             >
               <Input
-                onChange={handleChange}
                 placeholder="Package name"
                 style={{
                   border: "1px solid #98CBC6",
@@ -66,13 +87,12 @@ const AddSubscription = () => {
               />
             </Form.Item>
             <Form.Item
-
               label={
                 <span className="text-[18px] text-[#1F8D84]">
                   Package Amount
                 </span>
               }
-              name={"amount"}
+              name={"price"}
               rules={[
                 {
                   required: true,
@@ -81,13 +101,7 @@ const AddSubscription = () => {
               ]}
             >
               <Input
-                onChange={handleChange}
-                prefix={
-                  <PiCurrencyDollar
-                    className=""
-                    size={18}
-                  />
-                }
+                prefix={<PiCurrencyDollar className="" size={18} />}
                 placeholder="Package amount"
                 style={{
                   border: "1px solid #98CBC6",
@@ -112,7 +126,6 @@ const AddSubscription = () => {
               ]}
             >
               <Input
-                onChange={handleChange}
                 placeholder="Package expiration"
                 style={{
                   border: "1px solid #98CBC6",
@@ -127,7 +140,7 @@ const AddSubscription = () => {
             <p className="text-[18px] text-[#1F8D84] mb-[16px]">
               Package Features
             </p>
-            <Form.List name="features">
+            <Form.List name="featureList">
               {(fields, { add, remove }) => (
                 <>
                   {fields.map(({ key, name, ...restField }) => (
@@ -141,7 +154,6 @@ const AddSubscription = () => {
                         className="flex-1 my-0"
                       >
                         <Input
-                          onChange={handleChange}
                           placeholder="Enter new feature"
                           style={{
                             border: "1px solid #98CBC6",
@@ -159,7 +171,7 @@ const AddSubscription = () => {
                   <Form.Item>
                     <Button
                       type="dashed"
-                      onClick={() => add()}
+                      onClick={() => add({ first: "" })}
                       icon={<TiPlusOutline />}
                     >
                       Add feature field
@@ -179,6 +191,7 @@ const AddSubscription = () => {
           }}
           size="large"
           htmlType="submit"
+          loading={isLoading}
           className="w-full h-[56px] px-2 font-medium rounded-lg "
         >
           Add Subscription
