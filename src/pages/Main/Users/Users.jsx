@@ -1,8 +1,10 @@
-import React, { useState } from "react";
 import { Button, DatePicker, Input, Table } from "antd";
+import dayjs from "dayjs"; // Import dayjs
+import { useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
-import DashboardModal from "../../../Components/DashboardModal";
 import { IoSearch } from "react-icons/io5";
+import DashboardModal from "../../../Components/DashboardModal";
+import { useGetAllUsersQuery } from "../../../redux/features/dashboard/dashboardApi";
 
 const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,20 +13,26 @@ const Users = () => {
     setIsModalOpen(true);
     setModalData(data);
   };
+
+  //  call api
+  const { data: userData } = useGetAllUsersQuery();
+  const data = userData?.data?.results;
+
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+
   const columns = [
     {
       title: "#SI",
-      dataIndex: "key",
-      key: "key",
-      render: (text) => <a>{text}</a>,
+      dataIndex: "id",
+      key: "id",
+      render: (text) => <a>{text.slice(0, 7)}</a>,
     },
     {
       title: "User Name",
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "fullName",
+      key: "fullName",
     },
     {
       title: "Email",
@@ -33,13 +41,14 @@ const Users = () => {
     },
     {
       title: "Phone Number",
-      key: "phone",
-      dataIndex: "phone",
+      key: "phoneNumber",
+      dataIndex: "phoneNumber",
     },
     {
       title: "Join Date",
-      key: "joinDate",
-      dataIndex: "joinDate",
+      key: "createdAt",
+      dataIndex: "createdAt",
+      render: (createdAt) => dayjs(createdAt).format("DD MMM YYYY"),
     },
     {
       title: "Action",
@@ -56,20 +65,9 @@ const Users = () => {
       ),
     },
   ];
-  const data = [];
-  for (let index = 0; index < 20; index++) {
-    data.push({
-      key: index + 1,
-      name: "John Brown",
-      email: "subro@gmal.com",
-      phone: "+880 158448484",
-      joinDate: "16 Apr 2024",
-      _id: "12112121" + index,
-    });
-  }
+
   return (
     <div className="bg-[#E9F4F3] rounded-lg py-[16px]">
-      {/* <div className="w-screen overflow-x-auto"> */}
       <div className="">
         <div className="px-6 pb-5 flex justify-between items-center">
           <h3 className="text-xl font-medium text-[#464343]">{"User List"}</h3>
@@ -88,7 +86,7 @@ const Users = () => {
               className="bg-[#1F8D84] text-white border-none"
               type="primary"
               shape="circle"
-              icon={<IoSearch className="" />}
+              icon={<IoSearch />}
             />
           </div>
         </div>
@@ -102,12 +100,14 @@ const Users = () => {
         />
       </div>
       <DashboardModal setIsModalOpen={setIsModalOpen} isModalOpen={isModalOpen}>
-        <div className="h-[560px] flex flex-col justify-between">
+        <div className="h-auto flex flex-col justify-between">
           <div className="space-y-[18px] text-sm text-[#181414] pb-2 divide-y">
-            <h6 className="font-medium text-center pt-[18px]">User Details</h6>
+            <h6 className="font-semibold text-xl text-center pt-[18px]">
+              User Details
+            </h6>
             <div className="flex justify-between pt-[18px]">
               <p>User Name</p>
-              <p className="font-medium">{modalData.name}</p>
+              <p className="font-medium">{modalData.fullName}</p>
             </div>
             <div className="flex justify-between pt-[18px]">
               <p>Email</p>
@@ -115,7 +115,7 @@ const Users = () => {
             </div>
             <div className="flex justify-between pt-[18px]">
               <p>Phone Number</p>
-              <p className="font-medium">{modalData.phone}</p>
+              <p className="font-medium">{modalData.phoneNumber}</p>
             </div>
             <div className="flex justify-between pt-[18px]">
               <p>Address</p>
@@ -123,7 +123,10 @@ const Users = () => {
             </div>
             <div className="flex justify-between pt-[18px]">
               <p>Joining Date</p>
-              <p className="font-medium">{modalData.joinDate}</p>
+              <p className="font-medium">
+                {dayjs(modalData.createdAt).format("DD MMM YYYY")}{" "}
+                {/* Format the date */}
+              </p>
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ export const baseApi = createApi({
 
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("token");
+      console.log(token);
       //console.log(getState().auth.token);
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
@@ -23,7 +24,7 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["auth", "common", "category"],
+  tagTypes: ["auth", "dashboard", "subscription", "common", "category"],
   endpoints: () => ({}),
 });
 
