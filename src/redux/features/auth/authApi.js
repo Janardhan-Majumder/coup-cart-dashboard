@@ -50,6 +50,18 @@ export const authApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["auth"],
     }),
+    // change password
+    changePassword: builder.mutation({
+      query: ({ token, password }) => {
+        return {
+          url: `/v1/auth/change-password`,
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}` },
+          body: { password: password },
+        };
+      },
+      invalidatesTags: ["auth"],
+    }),
 
     // 05. resend otp
     resendOtp: builder.query({

@@ -1,34 +1,34 @@
 import baseApi from "../../api/baseApi";
 
-export const subscriptionApi = baseApi.injectEndpoints({
+export const categoryApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     // DashboardHome page
-    getAllSubsriptions: builder.query({
+    getAllCategory: builder.query({
       query: () => ({
-        url: "/v1/subscription",
+        url: "/v1/",
         method: "GET",
       }),
-      providesTags: ["subscription"],
+      providesTags: ["category"],
     }),
 
     //  add subscription
-    addSubscription: builder.mutation({
+    addCategory: builder.mutation({
       query: (addCategoryData) => ({
-        url: "/v1/subscription/create",
+        url: "/v1/",
         method: "POST",
         body: addCategoryData,
       }),
-      invalidatesTags: ["subscription"],
+      invalidatesTags: ["category"],
     }),
 
-    // edit subscription
-    editSubscription: builder.mutation({
+    //  edit category
+    editCategory: builder.mutation({
       query: ({ categoryId, editCategoryData }) => ({
         url: `/v1/${categoryId}`,
         method: "PUT",
         body: editCategoryData,
       }),
-      invalidatesTags: ["subscription"],
+      invalidatesTags: ["category"],
     }),
   }),
 });
@@ -36,5 +36,5 @@ export const subscriptionApi = baseApi.injectEndpoints({
 export const {
   useGetAllSubsriptionsQuery,
   useAddSubscriptionMutation,
-  useEditSubscriptionMutation,
-} = subscriptionApi;
+  useEditCategoryMutation,
+} = categoryApi;
